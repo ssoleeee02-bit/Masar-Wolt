@@ -4,563 +4,228 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#07111f">
-<title>مسار Wolt</title>
+<title>Masar Wolt</title>
 
 <style>
 *{box-sizing:border-box}
-:root{
-  --bg:#050b14;
-  --card:#0d1a2a;
-  --card2:#102238;
-  --line:#203650;
-  --text:#f5f7fb;
-  --muted:#8e9bb0;
-  --blue:#16b9ff;
-  --blue2:#176cff;
-  --green:#20df91;
-  --yellow:#ffb625;
-  --red:#ff575f;
-  --purple:#c47cff;
-}
-html,body{
+
+body{
   margin:0;
-  min-height:100%;
-  background:
-    radial-gradient(circle at 50% -10%,#123452 0,transparent 32%),
-    var(--bg);
-  color:var(--text);
+  min-height:100vh;
+  background:#050b14;
+  color:#fff;
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
 }
-body{padding-bottom:110px}
-button,input{font:inherit}
-button{cursor:pointer}
 
 .app{
-  width:min(100%,720px);
+  width:92%;
+  max-width:430px;
   margin:auto;
-  padding:calc(18px + env(safe-area-inset-top)) 16px 25px;
+  padding:30px 0;
 }
 
-/* HEADER */
 .header{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  margin-bottom:20px;
+  text-align:center;
+  margin-bottom:22px;
 }
-.brand{
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
+
 .logo{
-  width:58px;height:58px;
-  border-radius:18px;
-  display:grid;
-  place-items:center;
-  font-size:30px;
-  background:linear-gradient(145deg,#15c9ff,#176cff);
-  box-shadow:0 10px 35px rgba(22,185,255,.25);
-}
-.brand h1{
-  margin:0;
-  font-size:27px;
-  line-height:1.05;
-}
-.brand h1 span{color:var(--blue)}
-.brand p{
-  margin:6px 0 0;
-  color:var(--muted);
-  font-size:13px;
-}
-.theme{
-  border:1px solid var(--line);
-  background:#0b1726;
-  color:white;
-  width:48px;height:48px;
-  border-radius:16px;
-  font-size:21px;
-}
-
-/* STATS */
-.stats{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:10px;
-  margin-bottom:16px;
-}
-.stat{
-  min-height:110px;
-  padding:15px 10px;
-  border-radius:22px;
-  border:1px solid var(--line);
-  text-align:center;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-}
-.stat:nth-child(1){
-  background:linear-gradient(145deg,#082b23,#0c392e);
-  border-color:#12664d;
-}
-.stat:nth-child(2){
-  background:linear-gradient(145deg,#21143b,#291950);
-  border-color:#493078;
-}
-.stat:nth-child(3){
-  background:linear-gradient(145deg,#0b244a,#0d3266);
-  border-color:#17529b;
-}
-.stat .icon{font-size:23px;margin-bottom:7px}
-.stat .label{font-size:12px;color:#b8c4d4}
-.stat .value{
-  margin-top:7px;
-  font-size:22px;
-  font-weight:900;
-}
-
-/* CARDS */
-.card{
-  background:linear-gradient(145deg,rgba(15,31,49,.96),rgba(8,19,32,.96));
-  border:1px solid var(--line);
-  border-radius:24px;
-  padding:17px;
-  box-shadow:0 14px 40px rgba(0,0,0,.22);
-}
-.cardTitle{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:15px;
-}
-.cardTitle h2{
-  margin:0;
-  font-size:20px;
-}
-.plus{
-  width:38px;height:38px;
-  border:0;
-  border-radius:50%;
-  color:white;
-  font-size:26px;
-  background:linear-gradient(145deg,var(--blue),var(--blue2));
-}
-
-/* FORM */
-.formGrid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
-}
-.field label{
-  display:block;
-  color:#b8c4d4;
-  margin:0 4px 7px;
-  font-size:13px;
-}
-.field input{
-  width:100%;
-  height:55px;
-  border-radius:15px;
-  border:1px solid #304963;
-  background:#081522;
-  color:white;
-  outline:none;
-  padding:0 14px;
-  font-size:18px;
-}
-.field input:focus{
-  border-color:var(--blue);
-  box-shadow:0 0 0 3px rgba(22,185,255,.12);
-}
-.addBtn{
-  width:100%;
-  height:58px;
-  margin-top:13px;
-  border:0;
-  border-radius:17px;
-  color:white;
-  font-weight:900;
-  font-size:18px;
-  background:linear-gradient(90deg,#176cff,#17c6f8);
-  box-shadow:0 10px 30px rgba(23,108,255,.22);
-}
-.tools{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
-  margin:13px 0 24px;
-}
-.toolBtn{
-  height:48px;
-  border-radius:16px;
-  border:1px solid var(--line);
-  background:#101e30;
-  color:#b8c4d4;
-}
-
-/* ORDERS */
-.sectionHead{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin:8px 2px 12px;
-}
-.sectionHead h2{margin:0;font-size:21px}
-.badge{
-  background:#10243c;
-  color:#6ab8ff;
-  padding:7px 12px;
-  border-radius:999px;
-  font-size:13px;
-}
-.empty{
-  text-align:center;
-  color:var(--muted);
-  padding:32px 15px;
-  border:1px dashed #29415b;
-  border-radius:20px;
-}
-.order{
-  position:relative;
-  display:grid;
-  grid-template-columns:48px 1fr auto;
-  gap:12px;
-  align-items:center;
-  background:linear-gradient(145deg,#0d1d2e,#091522);
-  border:1px solid #213a53;
-  border-radius:20px;
-  padding:14px;
-  margin-bottom:10px;
-  overflow:hidden;
-}
-.order:after{
-  content:"";
-  position:absolute;
-  right:0;top:0;bottom:0;
-  width:5px;
-  background:var(--green);
-}
-.rank{
-  width:40px;height:40px;
-  display:grid;
-  place-items:center;
-  border-radius:50%;
-  background:linear-gradient(145deg,#18bdf9,#176cff);
-  font-weight:900;
-  font-size:17px;
-}
-.orderMain strong{
-  display:block;
-  font-size:17px;
+  font-size:36px;
   margin-bottom:5px;
 }
-.orderMain small{color:var(--muted)}
-.rate{
-  min-width:93px;
-  padding:9px 10px;
+
+h1{
+  margin:0;
+  font-size:27px;
+}
+
+.wolt{
+  color:#22b8ff;
+}
+
+.subtitle{
+  margin-top:6px;
+  color:#8996a8;
+  font-size:14px;
+}
+
+.card{
+  background:#0d1a2a;
+  border:1px solid #203650;
+  border-radius:20px;
+  padding:18px;
+}
+
+label{
+  display:block;
+  color:#aab5c5;
+  font-size:14px;
+  margin-bottom:7px;
+}
+
+input{
+  width:100%;
+  height:52px;
+  background:#07111f;
+  color:#fff;
+  border:1px solid #29445f;
   border-radius:14px;
-  text-align:center;
-  font-weight:900;
-  background:rgba(32,223,145,.13);
-  border:1px solid rgba(32,223,145,.35);
-  color:var(--green);
+  padding:0 14px;
+  font-size:19px;
+  outline:none;
+  margin-bottom:15px;
 }
-.rate small{
-  display:block;
-  font-size:11px;
-  margin-top:3px;
+
+input:focus{
+  border-color:#22b8ff;
 }
-.delete{
+
+button{
+  width:100%;
+  height:52px;
   border:0;
-  background:transparent;
-  color:var(--red);
-  font-size:20px;
-  padding:6px;
+  border-radius:14px;
+  background:linear-gradient(135deg,#1677ff,#22c1f6);
+  color:#fff;
+  font-size:18px;
+  font-weight:700;
 }
 
-/* TIP */
-.tip{
-  margin-top:18px;
-  display:flex;
-  gap:12px;
-  align-items:flex-start;
-}
-.tipIcon{font-size:30px}
-.tip strong{color:var(--yellow)}
-.tip p{
-  margin:6px 0 0;
-  color:#b1bdcc;
-  line-height:1.7;
-  font-size:13px;
+.result{
+  display:none;
+  margin-top:16px;
 }
 
-/* BOTTOM NAV */
-.bottom{
-  position:fixed;
-  z-index:10;
-  bottom:0;
-  left:0;right:0;
-  height:82px;
-  padding-bottom:env(safe-area-inset-bottom);
-  background:rgba(5,13,23,.94);
-  backdrop-filter:blur(18px);
-  border-top:1px solid #1d334b;
-}
-.bottomInner{
-  max-width:720px;
-  height:100%;
-  margin:auto;
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  align-items:center;
+.answer{
   text-align:center;
+  padding:15px;
+  border-radius:15px;
+  font-size:23px;
+  font-weight:800;
 }
-.nav{
-  color:#8493a8;
-  font-size:12px;
-}
-.nav span{
-  display:block;
-  font-size:22px;
-  margin-bottom:4px;
-}
-.nav.active{color:var(--blue)}
 
-@media(max-width:390px){
-  .app{padding-left:11px;padding-right:11px}
-  .brand h1{font-size:23px}
-  .logo{width:51px;height:51px}
-  .stats{gap:7px}
-  .stat{padding:12px 6px;min-height:102px}
-  .stat .value{font-size:18px}
-  .formGrid{grid-template-columns:1fr}
+.good{
+  background:rgba(30,215,140,.12);
+  border:1px solid #20d991;
+  color:#3ee8a4;
+}
+
+.bad{
+  background:rgba(255,75,85,.12);
+  border:1px solid #ff4b55;
+  color:#ff6b73;
+}
+
+.details{
+  margin-top:10px;
+  text-align:center;
+  color:#aab5c5;
+  font-size:15px;
+}
+
+.rate{
+  color:#fff;
+  font-size:20px;
+  font-weight:700;
+}
+
+.limit{
+  text-align:center;
+  color:#69788d;
+  font-size:12px;
+  margin-top:15px;
 }
 </style>
 </head>
 
 <body>
 
-<main class="app">
+<div class="app">
 
-  <header class="header">
-    <div class="brand">
-      <div class="logo">🛵</div>
-      <div>
-        <h1>مسار <span>Wolt</span></h1>
-        <p>اختر الأفضل • ووصل بذكاء</p>
-      </div>
-    </div>
-    <button class="theme">🌙</button>
-  </header>
-
-  <section class="stats">
-    <div class="stat">
-      <div class="icon">💰</div>
-      <div class="label">إجمالي الدخل</div>
-      <div class="value" id="totalMoney">₪ 0.00</div>
-    </div>
-
-    <div class="stat">
-      <div class="icon">📍</div>
-      <div class="label">إجمالي الكيلومترات</div>
-      <div class="value" id="totalKm">0 كم</div>
-    </div>
-
-    <div class="stat">
-      <div class="icon">📦</div>
-      <div class="label">عدد الطلبات</div>
-      <div class="value" id="totalOrders">0</div>
-    </div>
-  </section>
-
-  <section class="card">
-    <div class="cardTitle">
-      <h2>إضافة طلب جديد</h2>
-      <button class="plus" onclick="focusMoney()">+</button>
-    </div>
-
-    <div class="formGrid">
-      <div class="field">
-        <label>💰 المبلغ (₪)</label>
-        <input id="money" type="number" inputmode="decimal"
-               placeholder="مثال: 24.50">
-      </div>
-
-      <div class="field">
-        <label>🛣️ المسافة (كم)</label>
-        <input id="km" type="number" inputmode="decimal"
-               placeholder="مثال: 3">
-      </div>
-    </div>
-
-    <button class="addBtn" onclick="addOrder()">＋ إضافة الطلب</button>
-  </section>
-
-  <div class="tools">
-    <button class="toolBtn" onclick="clearAll()">🗑️ مسح الكل</button>
-    <button class="toolBtn">🕘 سجل اليوم</button>
+  <div class="header">
+    <div class="logo">🛵</div>
+    <h1>Masar <span class="wolt">Wolt</span></h1>
+    <div class="subtitle">هل الطلب يستاهل؟</div>
   </div>
 
-  <div class="sectionHead">
-    <h2>الطلبات <small style="color:#8997aa;font-size:13px">(مرتبة من الأفضل)</small></h2>
-    <div class="badge" id="countBadge">0 طلبات</div>
+  <div class="card">
+
+    <label>💰 سعر الطلب (₪)</label>
+    <input
+      id="price"
+      type="number"
+      inputmode="decimal"
+      step="0.1"
+      placeholder="مثال: 16"
+    >
+
+    <label>📍 المسافة (كم)</label>
+    <input
+      id="distance"
+      type="number"
+      inputmode="decimal"
+      step="0.1"
+      placeholder="مثال: 2.2"
+    >
+
+    <button onclick="calculate()">احسب</button>
+
+    <div id="result" class="result">
+
+      <div id="answer" class="answer"></div>
+
+      <div class="details">
+        قيمة الكيلومتر:
+        <span id="rate" class="rate"></span>
+      </div>
+
+    </div>
+
+    <div class="limit">
+      الحد المعتمد: 7 ₪ لكل كم
+    </div>
+
   </div>
 
-  <section id="orders">
-    <div class="empty">
-      📦<br><br>
-      أضف أول طلب، وسأحسب لك المبلغ لكل كيلومتر.
-    </div>
-  </section>
-
-  <section class="card tip">
-    <div class="tipIcon">💡</div>
-    <div>
-      <strong>نصيحة</strong>
-      <p>
-        كلما كان المبلغ لكل كم أعلى، كان العائد على المسافة أفضل.
-        القرار النهائي لك حسب موقعك ووقت الطلب.
-      </p>
-    </div>
-  </section>
-
-</main>
-
-<nav class="bottom">
-  <div class="bottomInner">
-    <div class="nav active"><span>🏠</span>الرئيسية</div>
-    <div class="nav"><span>📋</span>الطلبات</div>
-    <div class="nav"><span>📊</span>إحصائيات</div>
-  </div>
-</nav>
+</div>
 
 <script>
-let orders = JSON.parse(localStorage.getItem("masarWoltOrders") || "[]");
+function calculate(){
 
-function save(){
-  localStorage.setItem("masarWoltOrders",JSON.stringify(orders));
-}
+  const price =
+    parseFloat(document.getElementById("price").value);
 
-function focusMoney(){
-  document.getElementById("money").focus();
-}
+  const distance =
+    parseFloat(document.getElementById("distance").value);
 
-function addOrder(){
-  const money = Number(document.getElementById("money").value);
-  const km = Number(document.getElementById("km").value);
-
-  if(!money || money <= 0){
-    alert("أدخل مبلغ الطلب");
+  if(
+    !Number.isFinite(price) ||
+    !Number.isFinite(distance) ||
+    price <= 0 ||
+    distance <= 0
+  ){
+    alert("أدخل سعر الطلب والمسافة");
     return;
   }
 
-  if(!km || km <= 0){
-    alert("أدخل مسافة الطلب");
-    return;
+  const limit = 7;
+  const value = price / distance;
+
+  const answer = document.getElementById("answer");
+
+  document.getElementById("rate").textContent =
+    value.toFixed(2) + " ₪/كم";
+
+  if(value >= limit){
+    answer.className = "answer good";
+    answer.textContent = "🟢 مناسب";
+  }else{
+    answer.className = "answer bad";
+    answer.textContent = "🔴 غير مناسب";
   }
 
-  orders.push({
-    id:Date.now(),
-    money:money,
-    km:km,
-    rate:money/km,
-    time:new Date().toLocaleTimeString("ar",
-      {hour:"2-digit",minute:"2-digit"})
-  });
-
-  save();
-
-  document.getElementById("money").value="";
-  document.getElementById("km").value="";
-
-  render();
+  document.getElementById("result").style.display = "block";
 }
-
-function removeOrder(id){
-  orders = orders.filter(o => o.id !== id);
-  save();
-  render();
-}
-
-function clearAll(){
-  if(!orders.length) return;
-
-  if(confirm("هل تريد مسح جميع الطلبات؟")){
-    orders=[];
-    save();
-    render();
-  }
-}
-
-function render(){
-  const box=document.getElementById("orders");
-
-  const sorted=[...orders].sort((a,b)=>b.rate-a.rate);
-
-  document.getElementById("totalOrders").textContent=orders.length;
-
-  const totalMoney=orders.reduce((s,o)=>s+o.money,0);
-  const totalKm=orders.reduce((s,o)=>s+o.km,0);
-
-  document.getElementById("totalMoney").textContent=
-    "₪ "+totalMoney.toFixed(2);
-
-  document.getElementById("totalKm").textContent=
-    totalKm.toFixed(2)+" كم";
-
-  document.getElementById("countBadge").textContent=
-    orders.length+" طلبات";
-
-  if(!sorted.length){
-    box.innerHTML=`
-      <div class="empty">
-        📦<br><br>
-        أضف أول طلب، وسأحسب لك المبلغ لكل كيلومتر.
-      </div>`;
-    return;
-  }
-
-  box.innerHTML=sorted.map((o,i)=>{
-    let color="var(--green)";
-    let bg="rgba(32,223,145,.13)";
-    let border="rgba(32,223,145,.35)";
-
-    if(o.rate < 5){
-      color="var(--red)";
-      bg="rgba(255,87,95,.12)";
-      border="rgba(255,87,95,.35)";
-    }else if(o.rate < 8){
-      color="var(--yellow)";
-      bg="rgba(255,182,37,.12)";
-      border="rgba(255,182,37,.35)";
-    }
-
-    return `
-      <div class="order">
-        <div class="rank">${i+1}</div>
-
-        <div class="orderMain">
-          <strong>₪ ${o.money.toFixed(2)} • ${o.km.toFixed(2)} كم</strong>
-          <small>🕘 ${o.time}</small>
-        </div>
-
-        <div>
-          <div class="rate"
-            style="color:${color};background:${bg};border-color:${border}">
-            ₪ ${o.rate.toFixed(2)}
-            <small>لكل كم</small>
-          </div>
-
-          <button class="delete"
-            onclick="removeOrder(${o.id})">🗑️</button>
-        </div>
-      </div>`;
-  }).join("");
-}
-
-render();
 </script>
 
 </body>
